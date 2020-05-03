@@ -9,20 +9,20 @@ class AvoidanceScene extends GameScene {
 
         var max_val = 0;
         this.last_asteroid = null;
-        for (let i = 0; i < this.pipes.getChildren().length; i++) {
+        for (let i = 0; i < this.asteroids.getChildren().length; i++) {
             var val = Phaser.Math.Between(800, 1000);
             if (i < 5) {
                 var vv = this.ship.y;
-                this.pipes.getChildren()[i].setX(val);
-                this.pipes.getChildren()[i].setY(vv += (30 * (3 - i)));
-                this.pipes.getChildren()[i].setVelocity(-1000, 0);
+                this.asteroids.getChildren()[i].setX(val);
+                this.asteroids.getChildren()[i].setY(vv += (30 * (3 - i)));
+                this.asteroids.getChildren()[i].setVelocity(-1000, 0);
                 if (val > max_val) {
                     max_val = val;
-                    this.last_asteroid = this.pipes.getChildren()[i];
+                    this.last_asteroid = this.asteroids.getChildren()[i];
                 }
             }
             else {
-                this.pipes.getChildren()[i].setX(99999);
+                this.asteroids.getChildren()[i].setX(99999);
 
             }
         }
@@ -52,7 +52,7 @@ class AvoidanceScene extends GameScene {
         cursors.down.isDown = false;
 
         this.ship.body = false;
-        this.pipes.body = false;
+        this.asteroids.body = false;
         this.fire.body = false;
         this.space.body = false;
 
